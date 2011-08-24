@@ -62,13 +62,19 @@ Zope resources
 Installing Python
 =================
 
-It is not recommended to use the system-wide Python installation with Plone.
+It is not recommended to use the system-wide Python installation with Plone directly.
 Plone may require newer or older package versions, which could conflict with
 ones installed by your operating system. Installing packages to the system-wide
 Python installation always requires root privileges, and you could easily hose
 your box when doing Python development work.
 
+There is, however, an indirect way to use the system-wide Python installation with
+Plone without bumping into these problems. `Virtualenv <http://virtualenv.org>` allows
+one to do just that with the --no-site-packages option. Be very careful about 
+system-wide Python installation upgrades though when going this route!
+
 Plone Unified Installers compile their own, preconfigured, Python interpreter.
+
 
 If you are a developer, you might wish to use a custom-built Python
 interpreter, which gives you more control over the configuration.
