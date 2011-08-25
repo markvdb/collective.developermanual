@@ -66,18 +66,47 @@ It is not recommended to use the system-wide Python installation with Plone
 directly. Plone may require newer or older package versions, which could conflict 
 with ones installed by your operating system. Installing packages to the 
 system-wide Python installation always requires root privileges, and you could 
-easily hose your box when doing Python development work.
+easily hose your box when doing Python development work. There are three basic 
+ways to install Python for use with Plone:
 
-There is, however, an indirect way to use the system-wide Python installation with
-Plone without bumping into these problems. `Virtualenv <http://virtualenv.org>` 
-allows one to do just that with the --no-site-packages option. Be very careful 
-about system-wide Python installation upgrades though when going this route!
+Unified installer included python
+---------------------------------
 
-Plone Unified Installers compile their own, preconfigured, Python interpreter.
+No need to worry here. The Plone Unified Installer compiles its own preconfigured 
+Python interpreter.
 
+
+System python with virtualenv
+-----------------------------
+
+`Virtualenv <http://virtualenv.org>` is a tool to create isolated python 
+environments. It can help avoid the typical problems using a system-wide Python 
+install with Plone. Be very careful about system-wide Python installation 
+upgrades though when going this route!
+
+::
+    $ which python2.6 virtualenv
+    /usr/bin/python2.6
+    /usr/bin/virtualenv
+    $ /usr/bin/python2.6 /usr/bin/virtualenv --no-site-packages ~/virtpy26
+    New python executable in /home/developer/virtpy26/bin/python2.6
+    Also creating executable in /home/developer/virtpy26/bin/python
+    Please make sure you remove any previous custom paths from your 
+    /home/developer/.pydistutils.cfg file.
+    Installing setuptools............done.
+    $ cd ~/virtpy26
+    $ . bin/activate
+    (virtpy26)$ which python
+    /home/developer/virtpy26/bin/python    
+
+Compiling python from source (directly or with virtualenv)
+----------------------------------------------------------
 
 If you are a developer, you might wish to use a custom-built Python
 interpreter, which gives you more control over the configuration.
+
+Virtualenv can create isolated python environments on top of your 
+custom-built python environment too.
 
 .. note::
 
